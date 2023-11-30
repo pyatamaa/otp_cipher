@@ -33,26 +33,29 @@ def kodeascii(hasil_desimal):
         karakter_values += karakter_value
     return karakter_values
 
+def enkripsi(input_string, key):
+    ascii_values_string = konversiascii(input_string)
+    ascii_values_key = konversiascii(key)
+
+    hasil_string = konversibiner(ascii_values_string)
+    hasil_key = konversibiner(ascii_values_key)
+
+    hasil_xor = xor_biner(hasil_string, hasil_key)
+
+    hasil_desimal = biner_ke_desimal(hasil_xor)
+
+    hasil_karakter = kodeascii(hasil_desimal)
+
+    return hasil_karakter
+
+def dekripsi(input_string, key):
+    return enkripsi(input_string, key)
+
 input_string = input("masukkan plainteks: ")
 key = input("masukkan key: ")
 
-ascii_values_string = konversiascii(input_string)
-ascii_values_key = konversiascii(key)
+encrypted_string = enkripsi(input_string, key)
+print(f"hasil dari enkripsi adalah: {encrypted_string}")
 
-hasil_string = konversibiner(ascii_values_string)
-hasil_key = konversibiner(ascii_values_key)
-
-hasil_xor = xor_biner(hasil_string, hasil_key)
-
-hasil_desimal = biner_ke_desimal(hasil_xor)
-
-hasil_karakter = kodeascii(hasil_desimal)
-
-# print("hasil dari konversi ascii string: ", ascii_values_string)
-# print("hasil dari konversi ascii key: ", ascii_values_key)
-# print("hasil dari konversi biner string: ", hasil_string)
-# print("hasil dari konversi biner key: ", hasil_key)
-# print(f"hasil XOR dari {input_string} dan {key} adalah {hasil_xor}")
-# print(f"hasil konversi dari biner ke desimal adalah {hasil_desimal}")
-# print(f"karakter untuk kode ascii {hasil_desimal} adalah '{hasil_karakter}'")
-print(f"hasil dari enkripsi adalah: {hasil_karakter}")
+decrypted_string = dekripsi(encrypted_string, key)
+print(f"hasil dari dekripsi adalah: {decrypted_string}")
