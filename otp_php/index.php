@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>One-Time Pad Cipher</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
